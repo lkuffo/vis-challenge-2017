@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<%- include('header.ejs') %>
+<body>
+	<%- include('navbar.ejs') %>
+
+	<div class="container pt-70">
+
+
+		<% if (!user) { %>
+		<%- include('403.ejs') %>
+
+		<% } else { %>
+
+		<h1 class ='align-center animated fadeIn mt-20' style="text-shadow: 3px 3px 0px rgba(0,0,0,0.2);"> Lista de Usuarios </h1>
+		<br>
+		<div class="container pr-100 pl-100">
+			<div id="successAlertDiv">
+			</div>
+			<% if (typeof message !== 'undefined') { %>
+				<div class="successalert">
+					<span class="closebtn" onclick="this.parentElement.style.display='none'; window.location = window.location.pathname;">&times;</span>
+					<strong></strong> <%= message %>
+				</div>
+			<% } %>
+
+			<br>
+			<br>
+
+			<table id="pubTable" class="table table-striped table-bordered table-hover animated fadeIn" cellspacing="0" width="100%">
+				<thead>
+					<tr class="active">
+						<th>Correo</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				
+				<tbody id="tablaDeEjercicios">
+
+				</tbody>
+			</table>
+		</div>
+
+		<div id="delete-modal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close closeb" data-dismiss="modal">×</button>
+						<h2 id="modal-delete-mine-title" class="pb-20 modal-title">¿Desea eliminar este usuario?</h2>
+					</div>
+					<div class="modal-body" id="mine-delete-modal-body">
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-danger btn-raised mb-10 mr-10" id="delete-modal-button" data-dismiss="modal">Eliminar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<% } %>
+
+		</div>
+	<%- include('footer.ejs') %>
+
+    <script type="text/javascript" charset="utf-8">
+				$(document).scroll(function() {
+				    //checkOffset();
+				});
+
+
+				if (localStorage.getItem("message")){
+					$("#successAlertDiv").append( '<div class = "successalert" id = "indexActionAlert"> ' +
+													'<span class="closebtn" onclick="this.parentElement.style.display='+"'none'" + ';">&times;</span> ' +
+													localStorage.getItem("message") 		 +
+													'</div>'
+												);
+					localStorage.clear();
+				}
+
+
+
+        $.get("./api/users", function(data){
+            for (var i = 0; i < data.length; i++){
+                var reg = data[i];
+                $("#pubTable").append("<tr class='tablerow'><td class='bold'>"+reg.correo+"</td><td><button type='button' class='btn btn-raised btn-danger eliminar-usuario' id='user-"+reg.correo+"'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>"+"</tr>")
+            }
+
+        $(".eliminar-usuario").click(function(){
+				$("#delete-modal").modal("show");
+				var idUserDel = this.id.split("-")[1];
+				$("#delete-modal-button").click(function(){
+					var url = "./api/users/"+idUserDel;
+                
+                    $.ajax({
+	                    url: url,
+	                    type: 'DELETE',
+	                    success: function(result){
+							    			localStorage.setItem("message", "El usuario ha sido eliminado con exito.");
+	            			    window.location = window.location.pathname;
+	                    }
+	                });
+			    })
+        });
+
+
+        $('#pubTable').DataTable();
+
+    });
+
+	</script>
+
+
+</body>
+</html>
