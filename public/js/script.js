@@ -400,7 +400,6 @@ $(document).ready(function() {
         } else {
           clase_ic = "Alto"
         }
-        $("#indicestr1").text(clase_ic);
         $("#indicevalor1").text(prov["Indice_socioeconomico"]);
 
         $("#glob1").text(prov["Promedio_global"]);
