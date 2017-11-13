@@ -15,7 +15,7 @@ const saltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/login');
+  res.redirect('/dashboard');
 });
 
 /* GET new user page. */
@@ -45,19 +45,19 @@ router.get('/users', function(req, res, next) {
 });
 
 
-router.get('/login', function(req, res, next){
+router.get('/dashboard', function(req, res, next){
     if (req.query.success){
-      res.render('login', { user: req.user, message: "El usuario o contrasena son incorrectos. Por favor, ingrese nuevamente." });
+      res.render('dashboard', { user: req.user, message: "El usuario o contrasena son incorrectos. Por favor, ingrese nuevamente." });
     }
     if (req.user){
       res.redirect('/publicidad');
     }
-    res.render('login', { user: req.user });
+    res.render('dashboard', { user: req.user });
   });
 
-router.post('/login', passport.authenticate(
+router.post('/dashboard', passport.authenticate(
 	'local', { successRedirect: '/publicidad',
-            	failureRedirect: '/login?success=0'})
+            	failureRedirect: '/dashboard?success=0'})
 );
 
 router.get('/logout', function(req, res, next){
