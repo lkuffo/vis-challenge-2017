@@ -1,14 +1,27 @@
-	<script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.dataTables.min.js"></script>
-	<script src="//cdn.jsdelivr.net/interact.js/1.2.6/interact.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="/material/js/material.min.js"></script>
-	<script src="/material/js/ripples.min.js"></script>
-	<script type=text/javascript>
-		$.material.init()
-	</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.js" integrity="sha384-3xciOSDAlaXneEmyOo0ME/2grfpqzhhTcM4cE32Ce9+8DW/04AGoTACzQpphYGYe" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+	$('body').bootstrapMaterialDesign();
+	$('.popovertriggable').popover({
+  	trigger: 'hover'
+	})
 
+	$('.popovertriggable2').popover({
+  	trigger: 'hover'
+	})
+
+	$(".popovertriggable").hover(function(){
+	    $(this).addClass('animated ' + $(this).attr('action'));
+	});
+	$(".popovertriggable").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",function(){
+	    $(this).removeClass('animated ' + $(this).attr('action'));
+	});
+
+});
+</script>
+<script src="/js/script.js"></script>
 <footer class="footer-distributed" id="footer">
 
 	<div class="footer-left">

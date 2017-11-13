@@ -3,84 +3,185 @@
 <%- include('header.ejs') %>
 <body>
 	<%- include('navbar.ejs') %>
-	<div class = 'container pt-30 animated fadeInUp'>
-
+	<div class = 'container-fluid animated fadeInUp'>
 		<br>
-		<h1 class = 'align-center pb-10 pt-50' style="text-shadow: 3px 3px 0px rgba(0,0,0,0.2); color:white;">Calificaciones SerBachiller</h1>
-		<h2 class = 'align-center pb-10' style="text-shadow: 3px 3px 0px rgba(0,0,0,0.2);">2015-2017</h2>
+		<h1 class = 'align-center pb-10 pt-20' style="text-shadow: 3px 3px 0px rgba(0,0,0,0.2); color:white;">Calificaciones Ser Bachiller</h1>
+		<h2 class = 'align-center pb-20' style="text-shadow: 3px 3px 0px rgba(0,0,0,0.2);">2017</h2>
 		<div class="pt-20"></div>
 		<div class="main-login main-center">
 						<div class="row pt-30">
 
-							<div class="col-md-8">
-								<iframe width="100%" height="520" frameborder="0" src="https://lkuffo.carto.com/builder/cef21e92-62ec-11e7-bd42-0e98b61680bf/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+							<div class="col-md-6 card card2 pt-20 pb-20 mr-20 align-center" id="mapa_carto">
+
+								<iframe width="100%" height="520" frameborder="0" src="https://jananval.carto.com/builder/a86b5ee1-81b1-4ca1-a040-729cf408b2af/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
 							</div>
 
-							<div class="col-md-4">
-								<div class="col-md-12 pt-60">
-									<div class="checkbox">
-										<label><input type="checkbox" name="newIsDev" id="newIsDev" value="1">Dev Mine</label>
+							<div class="col-md-5 card card2 align-center">
+								<div class="col-md-12 pt-30">
+									<div class="form-group">
+										<div class="dropdown show">
+											<i class="fa fa-map-o pr-10" style="font-size:32px;"></i></a>
+											<label class="mr-sm-2" for="inlineFormCustomSelect" class="bold" style="font-size:32px;">Mapa: </label>
+										  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="promediodrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    Indice Socioeconomico
+										  </a>
+
+										  <div class="dropdown-menu" aria-labelledby="promediodrop">
+										    <label class="dropdown-item map_cal" id="glob" href="#">Promedio Global</label>
+										    <label class="dropdown-item map_cal" id="mat" href="#">Promedio Matematicas</label>
+												<label class="dropdown-item map_cal" id="cn" href="#">Promedio Ciencias Naturales</label>
+												<label class="dropdown-item map_cal" id="ll" href="#">Promedio Lengua y Literatura</label>
+										    <label class="dropdown-item map_cal" id="cc" href="#">Promedio Estudios Sociales</label>
+												<label class="dropdown-item" id="ic" href="#">Indice Socioeconomico</label>
+										  </div>
+										</div>
 									</div>
+
+								<hr>
+								<div id="bubble_graph" style="min-width: 310px; height: 450px; margin: 0 auto"></div>
 								</div>
 							</div>
-
 						</div>
+						<div class="card card2 mt-30 pt-20 pb-20 mb-30">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-2 align-center" id="selector_provincia">
+										<div class="form-group">
+										  <label for="sel1" style="font-size: 18px;">Provincia 1:</label>
+										  <select class="form-control mt-10" id="sel1">
+												<option selected="selected" disabled>Seleccione...</option>
+										    <option>Azuay</option>
+										    <option>Bolivar</option>
+										    <option>Cañar</option>
+										    <option>Carchi</option>
+												<option>Chimborazo</option>
+										    <option>Cotopaxi</option>
+										    <option>El Oro</option>
+										    <option>Esmeraldas</option>
+												<option>Galapagos</option>
+										    <option>Guayas</option>
+										    <option>Imbabura</option>
+										    <option>Loja</option>
+												<option>Los Rios</option>
+										    <option>Manabi</option>
+										    <option>Morona Santiago</option>
+										    <option>Napo</option>
+												<option>Orellana</option>
+										    <option>Pastaza</option>
+										    <option>Pichincha</option>
+										    <option>Santa Elena</option>
+												<option>Santo Domingo de los Tsachilas</option>
+										    <option>Sucumbios</option>
+										    <option>Tungurahua</option>
+										    <option>Zamora Chinchipe</option>
 
-
-						<div class="form-group" style="z-index: 1000;">
-							<label for="newDesc" class="col-md-2 control-label">Description</label>
-							<div class="col-md-10">
-								<textarea class="form-control" rows="3" id="newDesc" name="newDesc"></textarea>
-								<span class="help-block">Enter the mine description</span>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-
-								<div class="form-group" style="z-index: 1000;">
-									<label for="newOrganisms" class="col-md-2 control-label" style="z-index: 1001;">Organisms</label>
-									<div class="col-md-10 mb-20">
-										<textarea type="text" rows=3 class="form-control" name="newOrganisms" id="newOrganisms"> </textarea>
-										<span class="help-block">Comma separated list of Organisms</span>
+										  </select>
+										</div>
 									</div>
-								</div>
 
-								<div class="form-group" style="z-index: 1000;">
-									<label for="newNeighbours" class="col-md-2 control-label" style="z-index: 1001;">Neighbours</label>
-									<div class="col-md-10 mb-20">
-										<textarea type="text" rows=3 class="form-control" name="newNeighbours" id="newNeighbours"></textarea>
-										<span class="help-block">Comma separated list of Neighbours</span>
+									<div class="col-lg-1 align-center">
+										<i data-toggle="popover" data-placement="top" data-content="Numero de Instituciones" class="material-icons popovertriggable" action="tada" style="font-size: 100px; color: #F44336;">account_balance</i>
+										<div class="row align-center pt-40">
+											<div class="col-md-12 align-center">
+												Fiscal: <label id="fisc1" class="bold text_info"> - </label> <br>
+												Particular: <label id="priv1" class="bold text_info"> - </label> <br>
+												Fiscomisional: <label id="socmun1" class="bold text_info"> - </label> <br>
+											</div>
+										</div>
 									</div>
-								</div>
 
-
-								<div class="form-group" style="z-index: 1000;">
-									<label for="newTwitter" class="col-md-2 control-label" style="z-index: 1001;">Twitter</label>
-									<div class="col-md-10 mb-20">
-										<input type="text" class="form-control" id="newTwitter" name="newTwitter" placeholder="Instance Twitter">
+									<div class="col-md-1 align-center">
+										<i data-toggle="popover" data-placement="top" data-content="Numero de Estudiantes Totales (Absoluto / Relativo a Poblacion)" class="fa fa-male popovertriggable" action="pulse" style="font-size: 100px; color: #FF9800;"></i>
+										<div class="row align-center pt-40">
+											<div class="col-md-12 align-center">
+												Totales: <label id="estabs1" class="bold text_info"> - </label> <br>
+												Relativo a cada 10mil habitantes: <label id="estrel1" class="bold text_info"> - </label> <br>
+											</div>
+										</div>
 									</div>
-								</div>
 
-								<div class="form-group" style="z-index: 1000;">
-									<label for="newLatitude" class="col-md-2 control-label" style="z-index: 1001;">Latitude</label>
-									<div class="col-md-10">
-										<input type="number" step="0.00000001" class="form-control" name="newLatitude" id="newLatitude"  placeholder="Instance Location Latitude"/>
+									<div class="col-md-1 align-center">
+										<i data-toggle="popover" data-placement="top" data-content="Distribucion de Genero de Estudiantes" class="fa fa-venus-mars popovertriggable" action="pulse" style="font-size: 100px; color: #673AB7;"></i>
+										<div class="row align-center pt-40">
+											<div class="col-md-12 align-center">
+												Masculino: <label id="masc1" class="bold text_info"> - </label> <br>
+												Femenino: <label id="fem1" class="bold text_info"> - </label> <br>
+											</div>
+										</div>
 									</div>
-								</div>
 
-								<div class="form-group" style="z-index: 1000;">
-									<label for="newLongitude" class="col-md-2 control-label" style="z-index: 1001;">Longitude</label>
-									<div class="col-md-10">
-										<input type="number" step="0.00000001" class="form-control" name="newLongitude" id="newLongitude"  placeholder="Instance Location Longitude"/>
+									<div class="col-md-1 align-center">
+										<i data-toggle="popover" data-placement="top" data-content="Porcentaje de Estudiantes Discapacitados" class="material-icons popovertriggable" action="tada" style="font-size: 100px; color: #2196F3;">accessible</i>
+										<div class="row align-center pt-40">
+											<div class="col-md-12 align-center">
+												<label id="disc1" class="bold text_info" style="font-size: 24px;"> - </label> <br>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="col-md-12 pt-60">
-									<div id="mapid">
+
+									<div class="col-md-1 align-center">
+										<i data-toggle="popover" data-placement="top" data-content="Indice Socioeconomico Promedio" class="fa fa-money popovertriggable" action="bounce" style="font-size: 100px; color: #4CAF50;"></i>
+										<div class="row pt-40 align-center">
+											<div class="col-md-12">
+												<label id="indicestr1" class="bold text_info" style="font-size:30px;"> - </label> <br>
+												<label id="indicevalor1" class="bold text_info" style="font-size:24px;"> - </label>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2 align-center">
+										<div class="align-center">
+											<i data-toggle="popover" data-placement="top" data-content="Calificaciones Ser Bachiller" class="fa fa-cog fa-spin popovertriggable2" action="bounce" style="font-size: 100px; color: #607D8B;"></i>
+										</div>
+
+										<div class="row align-center pt-40">
+											<div class="col-md-5 align-right">
+												<i class="fa fa-gears popovertriggable2" data-toggle="popover" data-placement="left" data-content="Global" style="font-size:20px;" aria-hidden="true"></i>
+											</div>
+											<div class="col-md-6 align-left">
+												<label class="text_info" id="glob1"> - </label>
+											</div>
+										</div>
+
+										<div class="row align-center pt-10">
+											<div class="col-md-5 align-right">
+												<i class="fa fa-pagelines popovertriggable2" data-toggle="popover" data-placement="left" data-content="Ciencias Naturales" style="font-size:20px;" aria-hidden="true"></i>
+											</div>
+											<div class="col-md-6 align-left">
+												<label class="text_info" id="cn1"> - </label>
+											</div>
+										</div>
+
+										<div class="row align-center pt-10">
+											<div class="col-md-5 align-right">
+												<i data-toggle="popover" data-placement="left" data-content="Lengua y Literatura" class="material-icons popovertriggable2" action="tada" style="font-size: 20px;">sort_by_alpha</i>
+											</div>
+											<div class="col-md-6 align-left">
+												<label class="text_info" id="ll1"> - </label>
+											</div>
+										</div>
+
+										<div class="row align-center pt-10">
+											<div class="col-md-5 align-right">
+												<i class="fa fa-book popovertriggable2" data-toggle="popover" data-placement="left" data-content="Ciencias Sociales" style="font-size:20px;" aria-hidden="true"></i>
+											</div>
+											<div class="col-md-6 align-left">
+												<label class="text_info" id="cs1"> - </label>
+											</div>
+										</div>
+
+										<div class="row align-center pt-10">
+											<div class="col-md-5 align-right">
+												<i class="fa fa-plus popovertriggable2" data-toggle="popover" data-placement="left" data-content="Matematicas" style="font-size:20px;" aria-hidden="true"></i>
+											</div>
+											<div class="col-md-6 align-left">
+												<label class="text_info" id="mat1"> - </label>
+											</div>
+										</div>
 
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -89,6 +190,5 @@
 
 	</div>
 	<%- include('footer.ejs') %>
-
 </body>
 </html>

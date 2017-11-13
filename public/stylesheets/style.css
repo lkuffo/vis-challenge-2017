@@ -78,6 +78,32 @@ nav{
     text-decoration: none;
 }
 
+.align-right {
+    margin: 0 auto;
+    text-align: right;
+    align-items: right;
+    display: block;
+}
+
+.card2{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;
+
+}
+
+.vertic-align {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.align-left {
+    margin: 0 auto;
+    text-align: left;
+    align-items: left;
+    display: block;
+}
+
+
 .align-center {
     margin: 0 auto;
     text-align: center;
@@ -315,7 +341,7 @@ input::-webkit-input-placeholder {
 }
 
 .main-login{
- 	background-color: #fff;
+ 	  background-color: #fff;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -342,7 +368,7 @@ input::-webkit-input-placeholder {
  	margin: 0 auto;
  	max-width: 100%;
   padding: 10px 40px;
-	background:white;
+	background:#f7f7f7;
 	color: black;
   text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
